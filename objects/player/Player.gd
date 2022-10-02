@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-var acceleration : float = 512
-var max_speed : float = 256
+var acceleration : float = 256
+var max_speed : float = 150
 var friction := 0.25
 var air_resistance := 0.1
 var gravity : float = 800
@@ -10,6 +10,8 @@ var jump_force : float = 325
 var motion := Vector2.ZERO
 
 export(NodePath) var camera
+
+var pause_movement := false
 
 onready var sprite := $Sprite
 onready var anim_player := $AnimationPlayer
@@ -22,6 +24,10 @@ func _ready() -> void:
 	$RemoteTransform2D.remote_path = camera
 
 func _physics_process(delta: float) -> void:
+	if pause_movement:
+		anim_player.play("idle")
+		return
+	
 	var x_input : float = Input.get_action_strength("ui_right") - Input.get_action_raw_strength("ui_left")
 
 	if x_input != 0:

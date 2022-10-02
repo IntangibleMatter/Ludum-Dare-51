@@ -18,6 +18,8 @@ onready var text_display := $TextureRect/Label
 func _ready() -> void:
 	randomize()
 
+	AudioServer.set_bus_mute(1, true)
+
 func change_level(level_path: String) -> void:
 	trans_lines.shuffle()
 	text_display.text = trans_lines[0]
@@ -26,6 +28,19 @@ func change_level(level_path: String) -> void:
 	yield(anim_player, "animation_finished")
 	#warning-ignore:RETURN_VALUE_DISCARDED
 	get_tree().change_scene("res://scenes/" + level_path + ".tscn")
+	yield(get_tree().create_timer(0.5), "timeout")
+	anim_player.play("end_trans")
+	yield(anim_player, "animation_finished")
+	get_tree().paused = false
+
+func restart() -> void:
+	trans_lines.shuffle()
+	text_display.text = trans_lines[0]
+	get_tree().paused = true
+	anim_player.play("start_trans")
+	yield(anim_player, "animation_finished")
+	#warning-ignore:RETURN_VALUE_DISCARDED
+	get_tree().reload_current_scene()
 	yield(get_tree().create_timer(0.5), "timeout")
 	anim_player.play("end_trans")
 	yield(anim_player, "animation_finished")

@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/LevelBase.gd" type="Script" id=1]
 [ext_resource path="res://objects/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/graphics/env/tiles/tiles_edge/tileset_tiles_edge.tres" type="TileSet" id=3]
 [ext_resource path="res://assets/graphics/env/tiles/tiles_main/tileset_tiles_main.tres" type="TileSet" id=4]
 [ext_resource path="res://scenes/utils/Exit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/Dialogue.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/graphics/env/tiles/bg_tileset.tres" type="TileSet" id=7]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=8]
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,8 +15,11 @@ script = ExtResource( 1 )
 [node name="tilemaps" type="Node2D" parent="."]
 
 [node name="BG_tilemap" type="TileMap" parent="tilemaps"]
+modulate = Color( 0.435294, 0.435294, 0.435294, 1 )
+tile_set = ExtResource( 7 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+cell_half_offset = 0
 format = 1
 __meta__ = {
 "_editor_description_": "tilemap of the background"
@@ -41,7 +47,7 @@ __meta__ = {
 
 [node name="env" type="Node2D" parent="obj"]
 
-[node name="security_cameras" type="Node2D" parent="obj/env"]
+[node name="SecurityCameras" type="Node2D" parent="obj/env"]
 
 [node name="Player" parent="obj" instance=ExtResource( 2 )]
 unique_name_in_owner = true
@@ -67,3 +73,18 @@ smoothing_speed = 10.0
 [node name="Exits" type="Node2D" parent="."]
 
 [node name="Exit" parent="Exits" instance=ExtResource( 5 )]
+level_exit_shape = null
+
+[node name="Dialogue" parent="." instance=ExtResource( 6 )]
+
+[node name="CutsceneTriggers" type="Node2D" parent="."]
+
+[node name="AlarmTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="UI" parent="." instance=ExtResource( 8 )]
+
+[connection signal="dialogue_over" from="Dialogue" to="." method="_on_Dialogue_dialogue_over"]
+[connection signal="timeout" from="AlarmTimer" to="." method="_on_AlarmTimer_timeout"]

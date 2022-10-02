@@ -15,4 +15,3 @@ func _on_PlayerMovementDetector_body_entered(body:Node) -> void:
 
 		var tween : SceneTreeTween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 		tween.tween_property($Label, "modulate", Color("#00ffffff"), 1)
-		tween.tween_callback(self, "queue_free")

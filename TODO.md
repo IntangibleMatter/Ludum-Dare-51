@@ -1,10 +1,10 @@
 # TODO
 
-- Cutscene triggers
-- Cutscenes
+- ~~Cutscene triggers~~
+- ~~Cutscenes~~
 - Death screen
-- Music
+- ~~Music~~
 - SFX
-- Backgrounds
+- ~~Backgrounds~~
 - levels
-- menu
+- ~~menu~~
