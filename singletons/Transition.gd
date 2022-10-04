@@ -22,7 +22,7 @@ func _ready() -> void:
 
 func change_level(level_path: String) -> void:
 	trans_lines.shuffle()
-	text_display.text = trans_lines[0]
+	text_display.text = "Survival..." if level_path == "Ending" else trans_lines[0]
 	get_tree().paused = true
 	anim_player.play("start_trans")
 	yield(anim_player, "animation_finished")

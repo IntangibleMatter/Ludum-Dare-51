@@ -418,7 +418,7 @@ tracks/2/keys = {
 extents = Vector2( 16, 48 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 8, 32 )
+extents = Vector2( 16, 32 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 8, 48 )
@@ -560,13 +560,13 @@ position = Vector2( 544, 128 )
 next_level = "06"
 level_exit_shape = SubResource( 1 )
 
-[node name="CutsceneTrigger" parent="Dialogue" index="3" instance=ExtResource( 3 )]
-position = Vector2( 496, 240 )
+[node name="CutsceneTrigger" parent="CutsceneTriggers" index="0" instance=ExtResource( 3 )]
+position = Vector2( 464, 240 )
 dialogue = PoolStringArray( "I see that there\'s no place to rest here....", "I\'ll have to run through as fast as I can if I want to make it." )
 cutscene_trigger_shape = SubResource( 8 )
 
-[node name="CutsceneTrigger2" parent="Dialogue" index="4" instance=ExtResource( 3 )]
-position = Vector2( 496, 128 )
+[node name="CutsceneTrigger2" parent="CutsceneTriggers" index="1" instance=ExtResource( 3 )]
+position = Vector2( 480, 128 )
 dialogue = PoolStringArray( "I can hardly believe that I made it...", "How much farther can it be until I escape\?" )
 cutscene_trigger_shape = SubResource( 9 )
 

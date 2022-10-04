@@ -23,7 +23,6 @@ tile_data = PoolIntArray( 131070, 0, 0, 131071, 0, 1, 65536, 0, 1, 65537, 0, 1, 
 
 [node name="PlayerSensor" parent="obj/env/SecurityCameras" index="0" instance=ExtResource( 2 )]
 position = Vector2( 368, 152 )
-monitoring = true
 
 [node name="CollisionPolygon2D" parent="obj/env/SecurityCameras/PlayerSensor" index="5"]
 polygon = PoolVector2Array( -112, 56, -144, 72, -144, 56, -240, 56, -248, -8, -248, -48, -224, -104, 208, -104, 240, -64, 240, 32, 224, 56, 144, 56, 144, 72, 112, 56 )
@@ -44,15 +43,12 @@ level_exit_shape = SubResource( 2 )
 
 [node name="CutsceneTrigger" parent="CutsceneTriggers" index="0" instance=ExtResource( 3 )]
 position = Vector2( 32, 248 )
-dialogue = PoolStringArray( "I see that I now must run past an active security camera.         ", "Thankfully, I know that if I run past while it\'s in it\'s off state, it won\'t see me         ", "I also notice that there\'s a faint red light that allows me to see where the camera can see.         ", "I\'m very thankful for those budget cuts now.         " )
+dialogue = PoolStringArray( "I see that I now must run past an active security camera.          ", "Thankfully, I know that if I run past while it\'s in it\'s off state, it won\'t see me          ", "I also notice that there\'s a faint red light that allows me to see where the camera can see.          ", "I wish I could thank whoever designed this security system." )
 cutscene_trigger_shape = SubResource( 1 )
 
 [node name="CutsceneTrigger2" parent="CutsceneTriggers" index="1" instance=ExtResource( 3 )]
 position = Vector2( 568, 248 )
-dialogue = PoolStringArray( "That was close        " )
+dialogue = PoolStringArray( "That was close         " )
 cutscene_trigger_shape = SubResource( 1 )
-
-[node name="AlarmTimer" parent="." index="7"]
-autostart = true
 
 [editable path="obj/env/SecurityCameras/PlayerSensor"]

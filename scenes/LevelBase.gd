@@ -10,6 +10,7 @@ onready var ui := $UI
 func _ready():
 	VisualServer.set_default_clear_color(Color.black)
 	player.position = $PlayerSpawn.position
+	# $Camera2D.position = player.position
 
 	for exit in $Exits.get_children():
 		exit.connect("change_level", self, "change_level")
@@ -56,3 +57,4 @@ func restart() -> void:
 	start_cutscene(death_line)
 	yield(dialogue_display, "dialogue_over")
 	Transition.restart()
+
